@@ -20,6 +20,31 @@ body {
 
 }
 
+header{
+    padding: 16px;
+    background-color: #1f234c;
+    display: flex;
+    justify-content: end;
+}
+
+header input{
+    background-color:transparent;
+    border: 2px solid #363da0;
+    border-radius: 50px;
+    padding: 7px;
+    color: antiquewhite;
+    font-family: inherit;
+
+}
+
+#search::placeholder{
+    color: aliceblue;
+}
+#search:focus{
+    outline: none;
+    background-color:#5d64bb;
+}
+
 main{
     display: flex;
     flex-wrap: wrap;
