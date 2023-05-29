@@ -8,18 +8,20 @@ const SEARCHAPI = "https://api.themoviedb.org/3/search/movie?&api_key=04c35731a5
 const main = document.getElementById("main");
 const form = document.getElementById("form");
 const search = document.getElementById("search");
-const heading=document.getElementById("main_heading");
-const nextPage=document.getElementById("btn_r");
-const previousPage=document.getElementById("btn_l");
+const heading = document.getElementById("main_heading");
+const pagination = document.getElementById("pagination");
+const nextPage = document.getElementById("btn_r");
+const previousPage = document.getElementById("btn_l");
+
 
 var p;
 // we are using the below function to fetch the data from the api url,the below function returns us a promise
 async function getMovies(e) {
-    const resp = await fetch(APIURL+e);
+    const resp = await fetch(APIURL + e);
     const respData = await resp.json();
 
     console.log(respData);
-    p=respData.page;
+    p = respData.page;
     return respData;
 }
 
@@ -27,8 +29,9 @@ async function getMovies(e) {
 
 async function show(e) {
     const h = await getMovies(e);
+    pagination.classList.remove("hide");
     h.results.forEach(movie => {
-        const { poster_path, title, vote_average ,overview} = movie //here we are destructuring these thing else we have to use them as movie.poster_path etc
+        const { poster_path, title, vote_average, overview } = movie //here we are destructuring these thing else we have to use them as movie.poster_path etc
         const movieEl = document.createElement("div")
 
         movieEl.classList.add("movie");
@@ -51,12 +54,12 @@ async function show(e) {
 
 
     });
-
+    
 }
 show(1)
 
-heading.addEventListener('click',()=>{
-    main.innerHTML='';
+heading.addEventListener('click', () => {
+    main.innerHTML = '';
     show(1);
 })
 
@@ -84,8 +87,9 @@ async function getSearch(a) {
 
 async function showSearch(e) {
     const h = await getSearch(e);
-    console.log(h);
+   
     main.innerHTML = '';
+    pagination.classList.add("hide");
     if (h.total_results == 0) {
         main.innerHTML = `<h1>No Match Found</h1>`
         return 0;
@@ -93,7 +97,7 @@ async function showSearch(e) {
     //clearing the previous movies inside the main
     h.results.forEach(movie => {
 
-        const { poster_path, title, vote_average,overview } = movie //here we are destructuring these thing else we have to use them as movie.poster_path etc
+        const { poster_path, title, vote_average, overview } = movie //here we are destructuring these thing else we have to use them as movie.poster_path etc
         const movieEl = document.createElement("div")
 
         movieEl.classList.add("movie");
@@ -133,20 +137,22 @@ form.addEventListener("submit", (e) => {
 
 // logic for the pagination
 
-// var p=1;
 
-nextPage.addEventListener('click',()=>{
+
+
+
+nextPage.addEventListener('click', () => {
     p++;
-    main.innerHTML='';
+    main.innerHTML = '';
     show(p);
 
 })
 
-previousPage.addEventListener('click',()=>{
-    if(p>1){
+previousPage.addEventListener('click', () => {
+    if (p > 1) {
         p--;
-        main.innerHTML='';
+        main.innerHTML = '';
         show(p);
     }
-   
+
 })

@@ -25,6 +25,11 @@ header{
     background-color: #1f234c;
     display: flex;
     justify-content: space-between;
+    /* position: fixed;
+    left: 0;
+    right: 0;
+    top:0;
+    z-index: 1; */
 }
 
 #main_heading{
@@ -57,6 +62,7 @@ main{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    /* margin-top: 90px; */
     
 
 }
@@ -129,17 +135,40 @@ main{
 #pagination{
     display: flex;
     justify-content: center;
+    margin-block: 10px;
+    
+    
 }
 
+.hide{
+    opacity: 0;
+}
 #pagination button{
     margin-inline: 10px;
     font-size: 20px;
     width: 25px;
     border-radius: 13px;
     border: 2px solid #1f234c;
+    outline: none;
 }
 #btn_l #btn_r{
     /* margin-inline: 2px; */
     font-weight: bolder;
     /* font-size: 2px; */
+}
+
+.top_pointer{
+    background-color:#5d64bb;
+    border-radius: 10px;
+    border: 1px solid black;
+    position: fixed;
+    right: 23px;
+    bottom: 30px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+}
+.top_pointer i{
+    color: rgb(205, 161, 50);
+   font-size: 23px;
 }
