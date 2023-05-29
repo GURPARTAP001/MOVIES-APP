@@ -24,7 +24,15 @@ header{
     padding: 16px;
     background-color: #1f234c;
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
+}
+
+#main_heading{
+    cursor: pointer;
+    width: 200px;
+    padding-inline: 39px;
+    color: rgb(202, 81, 60);
+    font-family: 'Potta One', cursive;
 }
 
 header input{
@@ -59,6 +67,7 @@ main{
     width: 190px;
     margin: 20px;
     overflow: hidden;
+    position:relative;
 }
 
 .movie img {
@@ -96,4 +105,41 @@ main{
 }
 .red {
     color: red;
+}
+
+.overview{
+   
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    padding: 20px;
+    font-size: 12px;
+    overflow:auto;
+    transform: translateY(102%);
+    transition: transform 0.3s ease-in;
+}
+
+.movie:hover .overview{
+    transform: translateY(20%);
+}
+
+#pagination{
+    display: flex;
+    justify-content: center;
+}
+
+#pagination button{
+    margin-inline: 10px;
+    font-size: 20px;
+    width: 25px;
+    border-radius: 13px;
+    border: 2px solid #1f234c;
+}
+#btn_l #btn_r{
+    /* margin-inline: 2px; */
+    font-weight: bolder;
+    /* font-size: 2px; */
 }
